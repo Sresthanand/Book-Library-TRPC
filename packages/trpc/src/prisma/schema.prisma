@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:root@localhost:5432/book-trpc?schema=public" 
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+model Book {
+  id      Int     @id @default(autoincrement())
+  name    String
+  author  String
+  readTime String
+  details String
+  image   String  @default("https://example.com/default-image.png")
+  pdf     String  @default("")
+}
+
+model Rating{
+   id      Int     @id @default(autoincrement())
+   BookId  Int
+   rating  Int
+}
+
+
+  
